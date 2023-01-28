@@ -8,24 +8,39 @@ A 0.1s
 A 0.1s
 """
 
-one_fossil_cycle = """
+walk_to_counter = """
 DPAD_UP 0.5s
 3.0s
 L_STICK@+000+100 1.5s
 DPAD_RIGHT 0.3s
 DPAD_UP 0.1s
+"""
+
+walk_outside = """
+DPAD_LEFT 0.3s
+L_STICK@+000-100 1.5s
+3.0s
+"""
+
+drop_off_fossil_text= """
+LOOP 7
+    A 0.1s
+    1.0s
+"""
+pick_off_fossil_text= """
+LOOP 6
+    A 0.1s
+    1.0s
+"""
+
+box_input = 2
+box_changes = box_input - 1
+check_box= """
+X 0.1s
+0.3s
 A 0.1s
-1.0s
-A 0.1s
-1.0s
-A 0.1s
-1.0s
-A 0.1s
-1.0s
-A 0.1s
-1.0s
-A 0.1s
-1.0s
-A 0.1s
-1.0s
+R 0.1s
+LOOP {box_changes}
+    R 0.1s
+    0.3s
 """
