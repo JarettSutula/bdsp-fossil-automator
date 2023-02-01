@@ -1,4 +1,5 @@
 from macros import *
+from util import *
 
 fossils = input("How many fossils?: ")
 check_box = input("Automate box-checking at the end? (y/n): ")
@@ -7,12 +8,15 @@ if check_box.lower == "Y":
 else:
     box_num = -1
 
-# macro_string represents
-macro_string = ""
-macro_string += launch_title
+# var to represent entire macro result in a list.
+main_loop = []
 
-main_loop = """
-LOOP {fossils}
-"""
-xd = walk_to_counter.split('\n')
-print(xd)
+# title launch does not need to be looped and therefore not indented.
+main_loop += macro_to_list(launch_title)
+
+# based on the number of fossils inputted, start a loop.
+# counter -> drop off -> outside -> counter -> pick up -> drop off -> outside
+loop_str = "LOOP {}".format(fossils)
+main_loop.append(loop_str)
+
+

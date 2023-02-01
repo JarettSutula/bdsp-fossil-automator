@@ -22,19 +22,19 @@ L_STICK@+000-100 1.5s
 3.0s
 """
 
-drop_off_fossil_text= """
+drop_off_fossil_text = """
 LOOP 7
     A 0.1s
     1.0s
 """
 
-pick_off_fossil_text= """
+pick_off_fossil_text = """
 LOOP 6
     A 0.1s
     1.0s
 """
 
-check_box= """
+check_box = """
 X 0.1s
 0.3s
 A 0.1s
