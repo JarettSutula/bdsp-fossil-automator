@@ -28,7 +28,7 @@ LOOP 7
     1.0s
 """
 
-pick_off_fossil_text = """
+pick_up_fossil_text = """
 LOOP 6
     A 0.1s
     1.0s
