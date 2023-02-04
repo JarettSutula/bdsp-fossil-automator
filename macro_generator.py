@@ -2,9 +2,9 @@ from macros import *
 from util import *
 
 fossils = input("How many fossils?: ")
-check_box = input("Automate box-checking at the end? (y/n): ")
-if check_box.lower == "Y":
-    box_num = input("What box # to check? ")
+check_box_input = input("Automate box-checking at the end? (y/n): ")
+if check_box_input.lower() == "y":
+    box_num = int(input("What box # to check? "))
 else:
     box_num = -1
 
@@ -31,6 +31,14 @@ for mcro in in_loop:
     main_loop += mcro
 
 # add box checking if desired from previous input
-if box_num != -1 and box_num != 1:
-    # add a loop for num-1
-    pass
+if box_num != -1:
+    main_loop += macro_to_list(check_box)
+    # check which box to go to. If it's not box 1, loop. Otherwise just let it go.
+    if box_num > 1:
+        box_loop = ["LOOP {}".format(box_num-1), "    R 0.1s", "    0.3s"]
+        main_loop += box_loop
+
+# place contents of main_loop into a text file for easy copy/pasting into NXBT.
+with open('bdsp_macro.txt', 'w') as f:
+    for line in main_loop:
+        f.write(f"{line}\n")

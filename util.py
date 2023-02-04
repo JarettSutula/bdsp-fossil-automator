@@ -1,5 +1,5 @@
 def add_indent_to_macro(macro):
-    indent = "  "
+    indent = "    "
     m = macro_to_list(macro)
     for i in range(len(m)):
         m[i] = indent + m[i]
