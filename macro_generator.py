@@ -1,12 +1,18 @@
+"""Generate a text file that runs in NXBT's webapp or command line interface.
+
+The macro in the text file should loop the fossil dropping-off/picking up
+process. Box Checking/Title launch inclusions are added as well.
+"""
 from macros import *
 from util import *
 
 fossils = int(input("How many fossils?: "))
-check_box_input = input("Automate box-checking at the end? (y/n): ")
-if check_box_input.lower() == "y":
-    box_num = int(input("What box # to check? "))
-else:
-    box_num = -1
+# Removing Box-Checking feature for now. dangerous with save possibility.
+# check_box_input = input("Automate box-checking at the end? (y/n): ")
+# if check_box_input.lower() == "y":
+#     box_num = int(input("What box # to check? "))
+# else:
+#     box_num = -1
 
 # var to represent entire macro result in a list.
 main_loop = []
@@ -14,8 +20,8 @@ main_loop = []
 # title launch does not need to be looped and therefore not indented.
 # some strange nxbt things happen after waiting a while - more stability if
 # the macro is just run at the right place and not from the menu.
+# TODO: investigate nxbt instability. possibly fine on cli and not webapp?
 # main_loop += macro_to_list(launch_title)
-
 # drop off first fossil (counter -> drop off -> outside)
 main_loop += macro_to_list(walk_to_counter)
 main_loop += macro_to_list(drop_off_fossil_text)
@@ -41,18 +47,19 @@ for mcro in in_loop:
 main_loop += macro_to_list(walk_to_counter)
 main_loop += macro_to_list(pick_up_fossil_text)
 
-# add box checking if desired from previous input
-if box_num != -1:
-    main_loop += macro_to_list(check_box)
-    # check which box to go to. If it's not box 1, loop. Otherwise just let it go.
-    if box_num > 1:
-        box_loop = ["LOOP {}".format(box_num-1), "    R 0.1s", "    0.3s"]
-        main_loop += box_loop
+# # add box checking if desired from previous input
+# if box_num != -1:
+#     main_loop += macro_to_list(check_box)
+#     # check which box to go to. If it's not box 1, loop. 
+#     # Otherwise just let it go.
+#     if box_num > 1:
+#         box_loop = ["LOOP {}".format(box_num-1), "    R 0.1s", "    0.3s"]
+#         main_loop += box_loop
 
 # add delay at last line
 main_loop += ["0.5s"]
 
-# place contents of main_loop into a text file for easy copy/pasting into NXBT.
+# place contents of main_loop into text file for easy copy/pasting into NXBT
 with open('bdsp_macro.txt', 'w') as f:
     for line in main_loop:
         f.write(f"{line}\n")
