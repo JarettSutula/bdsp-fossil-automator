@@ -29,7 +29,7 @@ A script that creates a macro for NXBT controllers to automate Shiny fossil hunt
 ## **Dependencies**
 The script generator itself does not require any dependencies to run. However, the macro is made for [NXBT](https://github.com/Brikwerk/nxbt). Installation and usage instructions can be found there. I found success with this [$10 bluetooth adapter on Amazon](https://www.amazon.com/Sabrent-Bluetooth-Adapter-Technology-BT-UB40/dp/B06XHY5VXF), as other NXBT users recommended.
 
-## **Instructions**
+## **Instructions and Usage**
 Run macro_generator.py and follow the prompts. The resulting text file writes to bdsp_macro.txt. You can either copy the contents and paste them into the NXBT webapp or you can read the file in with the NXBT CLI.
 
 **The macro is made for a few specific settings - Sound Effects and Pokemon Cries set to 0, Text Speed set to Fast, and Send to Boxes set to Automatic**. This **drastically** speeds up the process and makes the most sense for a macro to run on. **It also requires you to start directly OUTSIDE of the Museum in Orebourgh City, as show in the photos above.** After this is done, you can check your desired box to see if they are shiny.
@@ -37,7 +37,7 @@ Run macro_generator.py and follow the prompts. The resulting text file writes to
 ## **Warning**
 NXBT, while a really cool program, seems to have issues with macro latency and sometimes connectivity issues. I find that my loop of 10 fossils (Roughly 4 minutes long) sometimes gets caught up after dropping off the 9th fossil. It works perfectly on 1-8 fossils at the moment. After each run for me, the controller normally disconnects so I press **reconnect controller** on the webapp when I am ready and then run the macro immediately after. Currently investigating if ~4m is the limit overall for just for my hardware or if this is a problem with the macro itself.
 
-Because of the instability I've experienced, I've removed the part of the macro that starts from the main Switch menu and launches the title. It has drastically reduced the amount of problems I've had as it waits for ~30s. I also **highly recommend NOT to use the 'check box' option as if the inputs get messed up due to NXBT or your hardware's instability IT MAY PRESS R AND LOAD UP YOUR SAVE MENU PREMATURELY**. I am looking into this issue and may just remove it entirely to limit any trouble this could cause if someone isn't looking at their Switch.
+Because of the instability I've experienced, I've removed the part of the macro that starts from the main Switch menu and launches the title. It has drastically reduced the amount of problems I've had as it waits for ~30s. I also **highly recommend NOT to use the 'check box' option as if the inputs get messed up due to NXBT or your hardware's instability IT MAY PRESS R AND LOAD UP YOUR SAVE MENU PREMATURELY**. I am looking into this issue and ~~may just remove it~~ have removed it entirely to limit any trouble this could cause if someone isn't looking at their Switch.
 
 ## **Troubleshooting**
 I ran into a handful of errors getting this up and running with NXBT. There are some useful threads in the NXBT issues threads, but I will compile what worked best for me here.
@@ -69,5 +69,10 @@ sudo nxbt webapp
 ```
 and then you can get to work with your macro.
 
+**I am getting latency and/or my commands are being looped more than they should be.**
+
+I've encountered this problem as well, and just around ~4 minutes my controller will repeat whatever the last command is. I have tried it on two different PCs and had similar problems between both. I would **highly recommend** running loops under ~4 minutes total. My macro has some delay between presses just to ensure little bits of latency don't throw the entire thing out of whack.
+
+
 ## **Help/Additions**
-If you require any help or have any ideas/find any bugs/want to push something, either make an issue or a PR!
+If you require any help or have any ideas/find any bugs/want to push something, either make an issue or a PR! And if you are making a similar project, feel free to use my code for ideas!
